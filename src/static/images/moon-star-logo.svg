@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- 红色圆环 -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#dc143c" stroke-width="8"/>
+  <!-- 内部白色圆 -->
+  <circle cx="100" cy="100" r="80" fill="white"/>
+  <!-- 五角星 -->
+  <path d="M100 50 L108 70 L128 70 L114 80 L118 100 L100 90 L82 100 L86 80 L72 70 L92 70 Z" fill="#dc143c"/>
+  <!-- 月星牌文字 -->
+  <text x="100" y="115" font-family="'Noto Sans SC', sans-serif" font-size="42" font-weight="bold" fill="#dc143c" text-anchor="middle">月星牌</text>
+  <!-- Since 1947 -->
+  <text x="100" y="140" font-family="'Myriad Pro', sans-serif" font-size="20" fill="#dc143c" text-anchor="middle">Since 1947</text>
+  <!-- 小五角星 -->
+  <path d="M100 155 L104 165 L112 165 L106 170 L108 180 L100 175 L92 180 L94 170 L88 165 L96 165 Z" fill="#dc143c"/>
+</svg>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月星防水宣传图</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background-color: white;
+        }
+        .banner-content {
+            flex: 1;
+            padding-right: 40px;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: #e60012;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .logo-text {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #666;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #333;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #333;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .feature {
+            background-color: #e60012;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .feature-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .engineer {
+            width: 300px;
+            height: 400px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .engineer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .background-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            opacity: 0.1;
+            background: url('https://via.placeholder.com/800x600?text=月星防水') no-repeat center center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="banner-content">
+            <div class="logo">
+                月星牌
+            </div>
+            <div class="logo-text">Since 1954</div>
+            <h1>月星防水 始于1954</h1>
+            <h2>70年国企担当 专业坚守</h2>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🏢</span>
+                    国企信誉
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🔧</span>
+                    专业施工
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✅</span>
+                    材料可靠
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🛡️</span>
+                    终身质保
+                </div>
+            </div>
+        </div>
+        <div class="engineer">
+            <div style="font-size: 120px; color: #e60012;">👷</div>
+        </div>
+        <div class="background-image"></div>
+    </div>
+</body>
+</html>
