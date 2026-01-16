@@ -1,5 +1,36 @@
 <template>
-  <view class="tab-bar-placeholder"></view> <view class="tab-bar">
+  <view v-if="isMaster" class="tab-bar-placeholder"></view>
+  <view v-else class="tab-bar-placeholder"></view>
+  
+  <!-- 师傅端TabBar -->
+  <view v-if="isMaster" class="tab-bar">
+    <view class="tab-item" @click="switchTab('/pages/master/workorder-receive')">
+      <image v-if="currentPath === 'pages/master/workorder-receive'" src="/static/tab-home-active.png" class="tab-icon" />
+      <image v-else src="/static/tab-home.png" class="tab-icon" />
+      <text class="tab-text" :class="{ active: currentPath === 'pages/master/workorder-receive' }">工单接收</text>
+    </view>
+
+    <view class="tab-item" @click="switchTab('/pages/master/construction')">
+      <image v-if="currentPath === 'pages/master/construction'" src="/static/tab-home-active.png" class="tab-icon" />
+      <image v-else src="/static/tab-home.png" class="tab-icon" />
+      <text class="tab-text" :class="{ active: currentPath === 'pages/master/construction' }">施工记录</text>
+    </view>
+
+    <view class="tab-item" @click="switchTab('/pages/master/completion')">
+      <image v-if="currentPath === 'pages/master/completion'" src="/static/tab-home-active.png" class="tab-icon" />
+      <image v-else src="/static/tab-home.png" class="tab-icon" />
+      <text class="tab-text" :class="{ active: currentPath === 'pages/master/completion' }">完工确认</text>
+    </view>
+
+    <view class="tab-item" @click="switchTab('/pages/master/profile')">
+      <image v-if="currentPath === 'pages/master/profile'" src="/static/tab-user-active.png" class="tab-icon" />
+      <image v-else src="/static/tab-user.png" class="tab-icon" />
+      <text class="tab-text" :class="{ active: currentPath === 'pages/master/profile' }">个人中心</text>
+    </view>
+  </view>
+
+  <!-- 客户端TabBar -->
+  <view v-else class="tab-bar">
     <view class="tab-item" @click="switchTab('/pages/index/index')">
       <image v-if="currentPath === 'pages/index/index'" src="/static/tab-home-active.png" class="tab-icon" />
       <image v-else src="/static/tab-home.png" class="tab-icon" />
@@ -30,8 +61,24 @@ const page = pages[pages.length - 1]
 // 获取当前页面的路径 (不带开头的 /)
 const currentPath = computed(() => page?.route)
 
+// 检查是否为师傅端
+const isMaster = computed(() => {
+  try {
+    const userInfo = uni.getStorageSync('userInfo')
+    // 更严格的检查，确保所有必要字段都存在
+    return userInfo && userInfo.token && userInfo.role === 'master'
+  } catch (error) {
+    // 如果出现任何错误，默认返回 false
+    return false
+  }
+})
+
 const switchTab = (url) => {
-  uni.switchTab({ url })
+  if (url.startsWith('/pages/master/')) {
+    uni.reLaunch({ url })
+  } else {
+    uni.switchTab({ url })
+  }
 }
 </script>
 

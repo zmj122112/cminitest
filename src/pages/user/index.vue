@@ -28,11 +28,11 @@ const tools = [
 ]
 
 const viewAllOrders = () => {
-  uni.showToast({ title: '功能开发中', icon: 'none' })
+  uni.navigateTo({ url: '/pages/user/orders' })
 }
 
 const viewOrdersByStatus = (type) => {
-  uni.showToast({ title: '功能开发中', icon: 'none' })
+  uni.navigateTo({ url: `/pages/user/orders?status=${type}` })
 }
 
 const logout = () => {
@@ -84,7 +84,7 @@ onShow(() => {
           v-for="tool in tools" 
           :key="tool.name" 
           style="display: flex; align-items: center; gap: 24rpx; cursor: pointer; padding: 24rpx; border-radius: 16rpx; border: 2rpx solid #f0f0f0;"
-          @click="uni.showToast({ title: '功能开发中', icon: 'none', duration: 2000 })"
+          @click="uni.navigateTo({ url: tool.path })"
         >
           <view style="font-size: 40rpx; width: 48rpx; text-align: center;">{{ tool.icon }}</view>
           <view style="font-size: 28rpx; color: #111827; font-weight: 500;">{{ tool.name }}</view>

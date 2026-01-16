@@ -8,51 +8,39 @@ import { onShow } from '@dcloudio/uni-app'
 const settings = ref([
   {
     id: 1,
-    title: '个人信息',
-    icon: '👤',
-    action: 'info'
-  },
-  {
-    id: 2,
-    title: '账户安全',
-    icon: '🔒',
-    action: 'security'
-  },
-  {
-    id: 3,
-    title: '通知设置',
-    icon: '🔔',
-    action: 'notification'
-  },
-  {
-    id: 4,
     title: '关于我们',
     icon: 'ℹ️',
     action: 'about'
   },
   {
-    id: 5,
+    id: 2,
     title: '用户协议',
     icon: '📄',
     action: 'agreement'
   },
   {
-    id: 6,
+    id: 3,
     title: '隐私政策',
     icon: '🔐',
     action: 'privacy'
   },
   {
-    id: 7,
+    id: 4,
     title: '清理缓存',
     icon: '🗑️',
     action: 'cache'
   },
   {
-    id: 8,
+    id: 5,
     title: '检查更新',
     icon: '🔄',
     action: 'update'
+  },
+  {
+    id: 6,
+    title: '师傅登录',
+    icon: '👷',
+    action: 'master-login'
   }
 ])
 
@@ -61,17 +49,18 @@ const performAction = (action) => {
   console.log('执行操作:', action)
   
   switch (action) {
-    case 'info':
-    case 'security':
-    case 'notification':
     case 'about':
     case 'agreement':
     case 'privacy':
+    case 'notification':
     case 'update':
       uni.showToast({ title: '功能开发中', icon: 'none' })
       break
     case 'cache':
       uni.showToast({ title: '缓存已清理', icon: 'success' })
+      break
+    case 'master-login':
+      uni.navigateTo({ url: '/pages/master/login' })
       break
     default:
       uni.showToast({ title: '功能开发中', icon: 'none' })

@@ -29,6 +29,14 @@
       "style": { "navigationBarTitleText": "客户评价" }
     },
     {
+      "path": "pages/master/detail",
+      "style": { "navigationBarTitleText": "师傅详情" }
+    },
+    {
+      "path": "pages/product/detail",
+      "style": { "navigationBarTitleText": "产品详情" }
+    },
+    {
       "path": "pages/user/address",
       "style": { "navigationBarTitleText": "地址管理" }
     },
@@ -43,6 +51,110 @@
     {
       "path": "pages/user/settings",
       "style": { "navigationBarTitleText": "设置" }
+    },
+    {
+      "path": "pages/user/info",
+      "style": { "navigationBarTitleText": "个人信息" }
+    },
+    {
+      "path": "pages/user/security",
+      "style": { "navigationBarTitleText": "账户安全" }
+    },
+    {
+      "path": "pages/user/about",
+      "style": { "navigationBarTitleText": "关于我们" }
+    },
+    {
+      "path": "pages/user/agreement",
+      "style": { "navigationBarTitleText": "用户协议" }
+    },
+    {
+      "path": "pages/user/privacy",
+      "style": { "navigationBarTitleText": "隐私政策" }
+    },
+    {
+      "path": "pages/user/orders",
+      "style": { "navigationBarTitleText": "全部订单" }
+    },
+    {
+      "path": "pages/user/order-detail",
+      "style": { "navigationBarTitleText": "订单详情" }
+    },
+    {
+      "path": "pages/master/login",
+      "style": { "navigationBarTitleText": "师傅登录" }
+    },
+    {
+      "path": "pages/master/dashboard",
+      "style": { "navigationBarTitleText": "师傅工作台" }
+    },
+    {
+      "path": "pages/master/workorder-receive",
+      "style": { "navigationBarTitleText": "工单接收" }
+    },
+    {
+      "path": "pages/master/workorder-detail",
+      "style": { "navigationBarTitleText": "工单详情" }
+    },
+    {
+      "path": "pages/master/my-orders",
+      "style": { "navigationBarTitleText": "我的订单" }
+    },
+    {
+      "path": "pages/master/construction",
+      "style": { "navigationBarTitleText": "施工记录" }
+    },
+    {
+      "path": "pages/master/construction-detail",
+      "style": { "navigationBarTitleText": "施工详情" }
+    },
+    {
+      "path": "pages/master/completion",
+      "style": { "navigationBarTitleText": "完工确认" }
+    },
+    {
+      "path": "pages/master/profile",
+      "style": { "navigationBarTitleText": "师傅中心" }
+    },
+    {
+      "path": "pages/master/score-center",
+      "style": { "navigationBarTitleText": "积分中心" }
+    },
+    {
+      "path": "pages/master/score-mall",
+      "style": { "navigationBarTitleText": "积分商城" }
+    },
+    {
+      "path": "pages/master/ranking",
+      "style": { "navigationBarTitleText": "积分排名" }
+    },
+    {
+      "path": "pages/master/exchange-record",
+      "style": { "navigationBarTitleText": "兑换记录" }
+    },
+    {
+      "path": "pages/master/help-center",
+      "style": { "navigationBarTitleText": "帮助中心" }
+    },
+    {
+      "path": "pages/master/bind-phone",
+      "style": { "navigationBarTitleText": "绑定手机" }
+    },
+    {
+      "path": "pages/master/change-password",
+      "style": { "navigationBarTitleText": "修改密码" }
+    },
+    {
+      "path": "pages/master/user-agreement",
+      "style": { "navigationBarTitleText": "用户协议" }
+    },
+    {
+      "path": "pages/master/privacy-policy",
+      "style": { "navigationBarTitleText": "隐私政策" }
+    },
+    {
+      "path": "pages/master/about-us",
+      "style": { "navigationBarTitleText": "关于我们" }
     }
   ],
   "globalStyle": {

@@ -1,8 +1,8 @@
 <script setup>
 // ✅ 引入组件
 import TabBar from '@/components/TabBar.vue'
-import { ref, onLoad } from 'vue'
-import { onShow } from '@dcloudio/uni-app'
+import { ref } from 'vue'
+import { onShow, onLoad } from '@dcloudio/uni-app'
 
 // 服务类型数据
 const serviceTypes = {
