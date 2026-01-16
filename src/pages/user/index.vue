@@ -42,7 +42,7 @@ const logout = () => {
 
 // ✅ 隐藏原生TabBar
 onShow(() => {
-  uni.hideTabBar()
+  
 })
 </script>
 

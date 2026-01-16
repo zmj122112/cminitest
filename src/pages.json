@@ -11,6 +11,38 @@
     {
       "path": "pages/user/index",
       "style": { "navigationBarTitleText": "个人中心" }
+    },
+    {
+      "path": "pages/service/detail",
+      "style": { "navigationBarTitleText": "服务详情" }
+    },
+    {
+      "path": "pages/master/list",
+      "style": { "navigationBarTitleText": "找师傅" }
+    },
+    {
+      "path": "pages/product/list",
+      "style": { "navigationBarTitleText": "找产品" }
+    },
+    {
+      "path": "pages/review/list",
+      "style": { "navigationBarTitleText": "客户评价" }
+    },
+    {
+      "path": "pages/user/address",
+      "style": { "navigationBarTitleText": "地址管理" }
+    },
+    {
+      "path": "pages/user/service",
+      "style": { "navigationBarTitleText": "联系客服" }
+    },
+    {
+      "path": "pages/user/feedback",
+      "style": { "navigationBarTitleText": "问题反馈" }
+    },
+    {
+      "path": "pages/user/settings",
+      "style": { "navigationBarTitleText": "设置" }
     }
   ],
   "globalStyle": {
@@ -20,7 +52,7 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-	"custom": true,  // <-- 加上这一行，非常重要！
+	"custom": true,  
     "color": "#999999",
     "selectedColor": "#E60012",
     "backgroundColor": "#FFFFFF",

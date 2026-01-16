@@ -15,9 +15,19 @@ const formData = ref({
 
 const currentType = ref('repair')
 
+// 预约时间选项
+const timeOptions = ref([
+  '立即',
+  '明天',
+  '后天',
+  '其他'
+])
+
+const selectedTime = ref(0)
+
 // ✅ 使用 onShow 接收首页传过来的参数，并隐藏原生TabBar
 onShow(() => {
-  uni.hideTabBar()
+ 
   
   // 检查是否有首页传来的参数
   const type = uni.getStorageSync('repairType')
@@ -68,18 +78,36 @@ const submitForm = () => {
       <view class="page-title" style="font-size: 36rpx; font-weight: bold; color: white;">预约上门</view>
     </view>
 
-    <view class="tabs" style="display: flex; background: #fff; padding: 20rpx; border-radius: 100rpx; margin: 30rpx; box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);">
-      <view class="tab-item" :class="{ active: currentType === 'repair' }" @click="currentType = 'repair'" style="flex: 1; text-align: center; padding: 32rpx 0; font-size: 28rpx; border-radius: 80rpx; color: #666; transition: all 0.3s;">房屋漏水</view>
-      <view class="tab-item" :class="{ active: currentType === 'new' }" @click="currentType = 'new'" style="flex: 1; text-align: center; padding: 32rpx 0; font-size: 28rpx; border-radius: 80rpx; color: #666; transition: all 0.3s;">新房防水</view>
+    <!-- 服务类型选择 -->
+    <view class="form-item" style="margin: 30rpx; background: #fff; border-radius: 24rpx; padding: 24rpx 32rpx; box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);">
+      <view class="form-label" style="color: #333; font-size: 28rpx; font-weight: medium; margin-bottom: 16rpx;">服务类型</view>
+      <view class="service-type-list" style="display: flex; gap: 20rpx;">
+        <view 
+          class="service-type-item" 
+          :class="{ active: currentType === 'repair' }" 
+          @click="currentType = 'repair'" 
+          style="flex: 1; text-align: center; padding: 20rpx 0; border: 2rpx solid #E5E7EB; border-radius: 12rpx; transition: all 0.3s; cursor: pointer; font-size: 28rpx; color: #333;"
+        >
+          漏水维修
+        </view>
+        <view 
+          class="service-type-item" 
+          :class="{ active: currentType === 'new' }" 
+          @click="currentType = 'new'" 
+          style="flex: 1; text-align: center; padding: 20rpx 0; border: 2rpx solid #E5E7EB; border-radius: 12rpx; transition: all 0.3s; cursor: pointer; font-size: 28rpx; color: #333;"
+        >
+          新房防水
+        </view>
+      </view>
     </view>
 
-    <view class="form-container" style="background: white; margin: 0 32rpx 40rpx; border-radius: 24rpx; padding: 48rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);">
+    <view class="form-container" style="background: white; margin: 0 32rpx 40rpx; border-radius: 24rpx; padding: 32rpx; box-sizing: border-box; width: calc(100% - 64rpx); box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);">
       <view style="margin-bottom: 40rpx;">
         <label style="display: block; margin-bottom: 16rpx; color: #333; font-size: 28rpx; font-weight: medium;">
           <text style="color: #E60012;">*</text> 预约时间
         </label>
-        <picker mode="date" :value="formData.appointmentTime" @change="formData.appointmentTime = $event.detail.value" style="width: 100%; padding: 24rpx 32rpx; border: 2rpx solid #E5E7EB; border-radius: 16rpx; font-size: 28rpx; background: white;">
-          <view style="color: #666;">{{ formData.appointmentTime || '请选择预约时间' }}</view>
+        <picker :range="timeOptions" :value="selectedTime" @change="selectedTime = $event.detail.value; formData.appointmentTime = timeOptions[selectedTime]" style="width: 100%; padding: 24rpx 32rpx; border: 2rpx solid #E5E7EB; border-radius: 16rpx; font-size: 28rpx; background: white;">
+          <view style="color: #666;">{{ timeOptions[selectedTime] }}</view>
         </picker>
       </view>
 
@@ -106,7 +134,7 @@ const submitForm = () => {
 
       <view style="margin-bottom: 48rpx;">
         <label style="display: block; margin-bottom: 16rpx; color: #333; font-size: 28rpx; font-weight: medium;">备注</label>
-        <textarea v-model="formData.remark" placeholder="请输入备注信息 (选填)" style="width: 100%; height: 160rpx; padding: 24rpx 32rpx; border: 2rpx solid #E5E7EB; border-radius: 16rpx; font-size: 28rpx; background: white; resize: none;"></textarea>
+        <input v-model="formData.remark" placeholder="请输入备注信息 (选填)" style="width: 100%; padding: 24rpx 32rpx; border: 2rpx solid #E5E7EB; border-radius: 16rpx; font-size: 28rpx; background: white;">
       </view>
 
       <button @click="submitForm" style="width: 100%; background-color: #E60012; color: white; border: none; border-radius: 16rpx; padding: 32rpx; font-size: 32rpx; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
@@ -114,13 +142,13 @@ const submitForm = () => {
       </button>
     </view>
 
-    <view class="contact-info" style="background: #FFF5F5; margin: 0 32rpx 40rpx; border-radius: 24rpx; padding: 40rpx; border: 2rpx solid #FEE2E2;">
-      <text style="color: #111827; font-weight: 700; margin-bottom: 24rpx; font-size: 32rpx; display: block;">如何联系我们</text>
-      <text style="color: #6b7280; line-height: 1.6; margin-bottom: 24rpx; font-size: 28rpx; display: block;">提交成功后，项目经理将通过企业微信与您联系，请保持手机畅通</text>
-      <text style="color: #6b7280; line-height: 1.6; margin-bottom: 32rpx; font-size: 28rpx; display: block;">您也可以直接扫码添加我们的企业微信，更快获得服务</text>
-      <view style="display: flex; align-items: center; gap: 16rpx; margin-bottom: 16rpx;">
-        <text style="color: #10b981; font-size: 32rpx;">✅</text>
-        <text style="color: #6b7280; font-size: 28rpx;">企业认证，安全可靠</text>
+    <view class="contact-info" style="background: #FFF5F5; margin: 0 32rpx 40rpx; border-radius: 12rpx; padding: 20rpx; border: 2rpx solid #FEE2E2;">
+      <h3 style="color: #111827; font-weight: 700; margin-bottom: 12rpx; font-size: 16px;">如何联系我们</h3>
+      <p style="color: #6b7280; line-height: 1.6; margin-bottom: 12rpx; font-size: 14px;">提交成功后，项目经理将通过企业微信与您联系，请保持手机畅通</p>
+      <p style="color: #6b7280; line-height: 1.6; margin-bottom: 16rpx; font-size: 14px;">您也可以直接扫码添加我们的企业微信，更快获得服务</p>
+      <view style="display: flex; align-items: center; gap: 8rpx; margin-bottom: 8rpx;">
+        <text style="color: #10b981; font-size: 16px;">✅</text>
+        <text style="color: #6b7280; font-size: 14px;">企业认证，安全可靠</text>
       </view>
     </view>
     
@@ -133,7 +161,12 @@ const submitForm = () => {
 .repair-estimate-page {
   /* padding-bottom 已在行内样式设置 */
 }
-.tabs { display: flex; background: #fff; padding: 20rpx; border-radius: 100rpx; margin: 30rpx; box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1); }
-.tab-item { flex: 1; text-align: center; padding: 32rpx 0; font-size: 28rpx; border-radius: 80rpx; color: #666; transition: all 0.3s; }
-.tab-item.active { background: #E60012; color: #fff; font-weight: bold; box-shadow: 0 4rpx 10rpx rgba(230, 0, 18, 0.3); }
+
+/* 服务类型选择样式 */
+.service-type-item.active {
+  border-color: #E60012;
+  background-color: #FFF5F5;
+  color: #E60012;
+  font-weight: bold;
+}
 </style>
