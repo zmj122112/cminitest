@@ -48,7 +48,7 @@
       <view style="background-color: white; border-radius: 32rpx; box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1); padding: 48rpx; margin-bottom: 24rpx;">
         <view style="font-size: 28rpx; font-weight: 600; color: #111827; margin-bottom: 32rpx;">企业文化</view>
         <view class="culture-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24rpx;">
-          <view v-for="(item, index) in 企业文化" :key="index" class="culture-item" style="background-color: #f9fafb; border-radius: 16rpx; padding: 24rpx;">
+          <view v-for="(item, index) in corporateCulture" :key="index" class="culture-item" style="background-color: #f9fafb; border-radius: 16rpx; padding: 24rpx;">
             <view class="culture-title" style="font-size: 24rpx; font-weight: 600; color: #E60012; margin-bottom: 12rpx;">{{ item.title }}</view>
             <view class="culture-content" style="font-size: 22rpx; color: #6b7280; line-height: 1.6;">{{ item.content }}</view>
           </view>
@@ -108,7 +108,7 @@ const developmentEvents = ref([
 ])
 
 // 企业文化
-const企业文化 = ref([
+const corporateCulture = ref([
   { title: '企业使命', content: '为客户创造安全、舒适的生活环境' },
   { title: '企业愿景', content: '成为国内领先的防水系统解决方案提供商' },
   { title: '核心价值观', content: '诚信、创新、专业、服务' },

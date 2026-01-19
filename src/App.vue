@@ -23,11 +23,11 @@ export default {
           uni.reLaunch({ url: '/pages/master/dashboard' })
         } else {
           // 客户权限，保持默认
-          uni.switchTab({ url: '/pages/index/index' })
+          uni.reLaunch({ url: '/pages/index/index' })
         }
       } else {
         // 未登录状态，保持默认客户页面
-        uni.switchTab({ url: '/pages/index/index' })
+        uni.reLaunch({ url: '/pages/index/index' })
       }
     }
   }

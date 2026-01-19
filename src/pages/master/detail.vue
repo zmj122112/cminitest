@@ -41,7 +41,7 @@ const goBack = () => {
 // 预约服务
 const goToRepairEstimate = () => {
   uni.setStorageSync('repairType', 'repair')
-  uni.switchTab({ url: '/pages/repair/estimate' })
+  uni.reLaunch({ url: '/pages/repair/estimate' })
 }
 
 // ✅ 隐藏原生TabBar

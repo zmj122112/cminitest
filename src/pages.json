@@ -13,6 +13,18 @@
       "style": { "navigationBarTitleText": "个人中心" }
     },
     {
+      "path": "pages/master/work",
+      "style": { "navigationBarTitleText": "作业大厅", "navigationBarBackgroundColor": "#CC0010", "navigationBarTextStyle": "white" }
+    },
+    {
+      "path": "pages/master/profile",
+      "style": { "navigationBarTitleText": "师傅中心" }
+    },
+    {
+      "path": "pages/master/certification",
+      "style": { "navigationBarTitleText": "个人认证" }
+    },
+    {
       "path": "pages/service/detail",
       "style": { "navigationBarTitleText": "服务详情" }
     },
@@ -113,10 +125,6 @@
       "style": { "navigationBarTitleText": "完工确认" }
     },
     {
-      "path": "pages/master/profile",
-      "style": { "navigationBarTitleText": "师傅中心" }
-    },
-    {
       "path": "pages/master/score-center",
       "style": { "navigationBarTitleText": "积分中心" }
     },
@@ -162,32 +170,5 @@
     "navigationBarTitleText": "月星防水",
     "navigationBarBackgroundColor": "#FFFFFF",
     "backgroundColor": "#F8F8F8"
-  },
-  "tabBar": {
-	"custom": true,  
-    "color": "#999999",
-    "selectedColor": "#E60012",
-    "backgroundColor": "#FFFFFF",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "static/logo.png",
-        "selectedIconPath": "static/logo.png"
-      },
-      {
-        "pagePath": "pages/repair/estimate",
-        "text": "报修",
-        "iconPath": "static/logo.png",
-        "selectedIconPath": "static/logo.png"
-      },
-      {
-        "pagePath": "pages/user/index",
-        "text": "我的",
-        "iconPath": "static/logo.png",
-        "selectedIconPath": "static/logo.png"
-      }
-    ]
   }
 }

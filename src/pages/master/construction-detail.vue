@@ -273,9 +273,11 @@ const completeConstruction = () => {
     content: '确定要完成施工吗？',
     success: (res) => {
       if (res.confirm) {
+        // 直接更新订单状态为待验收
         uni.showToast({ title: '施工完成成功', icon: 'success' })
         setTimeout(() => {
-          uni.navigateTo({ url: '/pages/master/completion' })
+          // 返回上一页
+          uni.navigateBack()
         }, 1000)
       }
     }

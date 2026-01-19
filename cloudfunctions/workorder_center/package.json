@@ -1,0 +1,6 @@
+{
+  "description": "工单中心云函数",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

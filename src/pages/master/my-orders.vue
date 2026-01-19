@@ -83,11 +83,14 @@
         <view style="font-size: 24rpx; color: #ccc;">{{ getEmptyStateText() }}</view>
       </view>
     </view>
+
+    <TabBar />
   </view>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
+import TabBar from '@/components/TabBar.vue'
 
 // 标签页数据
 const tabs = [
@@ -99,6 +102,27 @@ const tabs = [
 
 // 当前选中的标签
 const activeTab = ref('all')
+
+// 标签样式
+const tabStyle = {
+  flex: 1,
+  textAlign: 'center',
+  padding: '16rpx 0',
+  fontSize: '28rpx',
+  color: '#666',
+  position: 'relative'
+}
+
+// 激活标签样式
+const tabActiveStyle = {
+  flex: 1,
+  textAlign: 'center',
+  padding: '16rpx 0',
+  fontSize: '28rpx',
+  color: '#CC0010',
+  fontWeight: 'bold',
+  position: 'relative'
+}
 
 // 工单数据
 const workOrders = ref([

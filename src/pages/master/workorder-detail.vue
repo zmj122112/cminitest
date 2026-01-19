@@ -181,10 +181,25 @@ const getOrderStatusStyle = (status) => {
         backgroundColor: '#DBEAFE',
         color: '#2563EB'
       }
+    case 'inService':
+      return {
+        backgroundColor: '#DBEAFE',
+        color: '#2563EB'
+      }
     case 'completed':
+      return {
+        backgroundColor: '#FEF3C7',
+        color: '#D97706'
+      }
+    case 'accepted':
       return {
         backgroundColor: '#D1FAE5',
         color: '#059669'
+      }
+    case 'cancelled':
+      return {
+        backgroundColor: '#FEE2E2',
+        color: '#DC2626'
       }
     default:
       return {
@@ -205,9 +220,21 @@ const getOrderStatusTextStyle = (status) => {
       return {
         color: '#2563EB'
       }
+    case 'inService':
+      return {
+        color: '#2563EB'
+      }
     case 'completed':
       return {
+        color: '#D97706'
+      }
+    case 'accepted':
+      return {
         color: '#059669'
+      }
+    case 'cancelled':
+      return {
+        color: '#DC2626'
       }
     default:
       return {
@@ -227,15 +254,27 @@ const getOrderStatusDescStyle = (status) => {
       return {
         color: '#2563EB'
       }
+    case 'inService':
+      return {
+        color: '#2563EB'
+      }
     case 'completed':
       return {
+        color: '#D97706'
+      }
+    case 'accepted':
+      return {
         color: '#059669'
+      }
+    case 'cancelled':
+      return {
+        color: '#DC2626'
       }
     default:
       return {
         color: '#DC2626'
       }
-  }
+    }
 }
 
 // 获取订单状态描述
@@ -245,8 +284,14 @@ const getOrderStatusDescription = (status) => {
       return '等待师傅接收订单'
     case 'received':
       return '师傅已接收订单，准备上门服务'
+    case 'inService':
+      return '师傅正在服务中'
     case 'completed':
-      return '服务已完成，感谢您的信任'
+      return '服务已完成，等待客户验收'
+    case 'accepted':
+      return '客户已验收，订单完成'
+    case 'cancelled':
+      return '订单已取消'
     default:
       return '订单状态未知'
   }

@@ -44,14 +44,16 @@ const customerReviews = [
   { id: 2, name: '李女士', content: '国企背景果然不一样，推荐！', rating: 5, project: '屋顶补漏' }
 ]
 
+// 漏水维修
 const goToRepairEstimate = () => {
   uni.setStorageSync('repairType', 'repair')
-  uni.switchTab({ url: '/pages/repair/estimate' })
+  uni.reLaunch({ url: '/pages/repair/estimate' })
 }
 
+// 新房防水
 const goToAppointment = () => {
   uni.setStorageSync('repairType', 'new')
-  uni.switchTab({ url: '/pages/repair/estimate' })
+  uni.reLaunch({ url: '/pages/repair/estimate' })
 }
 
 onShow(() => {

@@ -1,5 +1,4 @@
 <script setup>
-// ✅ 引入组件
 import TabBar from '@/components/TabBar.vue'
 import { ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
@@ -8,7 +7,7 @@ import { onShow } from '@dcloudio/uni-app'
 const userInfo = ref({
   name: '张三',
   phone: '13800138000',
-  avatar: '/static/logo.png' // 确保这里有默认头像图片
+  avatar: '/static/logo.png' 
 })
 
 // 核心订单状态
@@ -19,31 +18,43 @@ const orderStats = [
   { name: '已完成', icon: '✅', type: 'completed' }
 ]
 
-// 功能菜单
+// 功能菜单：✅ 新增了切换身份按钮
 const tools = [
+  { name: '我是师傅 (切换端)', icon: '👷', action: 'switchRole' }, // 测试入口
   { name: '地址管理', icon: '📍', path: '/pages/user/address' },
   { name: '联系客服', icon: '🎧', path: '/pages/user/service' },
-  { name: '问题反馈', icon: '📝', path: '/pages/user/feedback' },
   { name: '设置', icon: '⚙️', path: '/pages/user/settings' }
 ]
 
-const viewAllOrders = () => {
-  uni.navigateTo({ url: '/pages/user/orders' })
+const handleToolClick = (tool) => {
+  // ✅ 切换身份的核心逻辑
+  if (tool.action === 'switchRole') {
+    uni.showModal({
+      title: '身份切换',
+      content: '是否进入师傅工作台？',
+      success: (res) => {
+        if (res.confirm) {
+          // 1. 写入缓存：角色变更为 master
+          uni.setStorageSync('userRole', 'master')
+          // 2. 必须使用 reLaunch 重启，确保 TabBar 重新读取缓存
+          uni.reLaunch({ url: '/pages/master/work' })
+        }
+      }
+    })
+    return
+  }
+
+  if (tool.path) {
+    uni.navigateTo({ url: tool.path })
+  } else {
+    uni.showToast({ title: '功能开发中', icon: 'none' })
+  }
 }
 
-const viewOrdersByStatus = (type) => {
-  uni.navigateTo({ url: `/pages/user/orders?status=${type}` })
-}
-
-const logout = () => {
-  console.log('退出登录')
-  uni.showToast({ title: '已退出登录', icon: 'success' })
-}
-
-// ✅ 隐藏原生TabBar
-onShow(() => {
-  
-})
+// ... 保持原有其他函数 ...
+const viewAllOrders = () => uni.navigateTo({ url: '/pages/user/orders' })
+const viewOrdersByStatus = (status) => uni.navigateTo({ url: `/pages/user/orders?status=${status}` })
+const logout = () => uni.showToast({ title: '已退出登录', icon: 'success' })
 </script>
 
 <template>
@@ -66,12 +77,7 @@ onShow(() => {
         </view>
       </view>
       <view style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16rpx;">
-        <view 
-          v-for="stat in orderStats" 
-          :key="stat.name" 
-          style="text-align: center; display: flex; flex-direction: column; align-items: center; cursor: pointer; padding: 16rpx 0;"
-          @click="viewOrdersByStatus(stat.type)"
-        >
+        <view v-for="stat in orderStats" :key="stat.name" style="text-align: center; display: flex; flex-direction: column; align-items: center; cursor: pointer; padding: 16rpx 0;" @click="viewOrdersByStatus(stat.type)">
           <view style="font-size: 48rpx; margin-bottom: 8rpx;">{{ stat.icon }}</view>
           <view style="font-size: 24rpx; color: #6b7280;">{{ stat.name }}</view>
         </view>
@@ -84,7 +90,7 @@ onShow(() => {
           v-for="tool in tools" 
           :key="tool.name" 
           style="display: flex; align-items: center; gap: 24rpx; cursor: pointer; padding: 24rpx; border-radius: 16rpx; border: 2rpx solid #f0f0f0;"
-          @click="uni.navigateTo({ url: tool.path })"
+          @click="handleToolClick(tool)" 
         >
           <view style="font-size: 40rpx; width: 48rpx; text-align: center;">{{ tool.icon }}</view>
           <view style="font-size: 28rpx; color: #111827; font-weight: 500;">{{ tool.name }}</view>
@@ -94,13 +100,7 @@ onShow(() => {
     </view>
 
     <view style="padding: 0 40rpx 48rpx;">
-      <button 
-        type="button" 
-        style="width: 100%; background-color: white; border: 2rpx solid #e5e7eb; border-radius: 16rpx; padding: 24rpx; font-size: 28rpx; color: #6b7280; cursor: pointer;"
-        @click="logout"
-      >
-        退出登录
-      </button>
+      <button type="button" style="width: 100%; background-color: white; border: 2rpx solid #e5e7eb; border-radius: 16rpx; padding: 24rpx; font-size: 28rpx; color: #6b7280; cursor: pointer;" @click="logout">退出登录</button>
     </view>
     
     <TabBar />
